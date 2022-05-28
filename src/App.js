@@ -12,17 +12,20 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 
 function App() {
-  const admin = JSON.parse(localStorage.getItem("persist:root"))
-    ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.accessToken
-    : "";
+  const admin =
+    JSON.parse(localStorage.getItem("persist:root")) &&
+    JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+      .currentUser
+      ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+          .currentUser.accessToken
+      : "";
   return (
     <Router>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        {admin && (
+        {admin !== null && (
           <>
             <Topbar />
             <div className="container">

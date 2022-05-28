@@ -19,5 +19,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export default app;
-
-process.env.MONGO_URL;

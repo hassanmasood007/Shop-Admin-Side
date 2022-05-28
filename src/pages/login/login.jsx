@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { login } from "../../redux/apiCalls";
 import classes from "./login.module.css";
 
@@ -7,6 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const usernameHandler = (event) => {
     setUsername(event.target.value);
@@ -18,6 +20,7 @@ const Login = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     login(dispatch, { username, password });
+    history.replace("/");
   };
 
   return (
